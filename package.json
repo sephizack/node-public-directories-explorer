@@ -1,0 +1,38 @@
+{
+  "name": "node-public-directories-explorer",
+  "version": "1.0.0",
+  "description": "Serve some directories publicly",
+  "main": "dist/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sephizack/node-public-directories-explorer"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "serve-index": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/concurrently": "^4.1.0",
+    "@types/jest": "^25.2.1",
+    "concurrently": "^5.0.0",
+    "jest": "^25.3.0",
+    "nock": "^12.0.3",
+    "nodemon": "^1.19.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "start": "tsc && node dist/src/app.js",
+    "watch-node": "nodemon dist/src/app.js",
+    "watch": "concurrently -k \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-ts": "tsc -w",
+    "test": "tsc --build --clean && tsc && jest -t"
+  },
+  "author": "Tony Bisegna",
+  "license": "MIT"
+}
