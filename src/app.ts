@@ -35,7 +35,16 @@ for (let directory of config.get("publicDirectories")) {
         directory["urlPath"],
         express.static(directory["localPath"]),
         serveIndex(directory["localPath"], {
-            'icons': true
+            'icons': true,
+            "filter": (filename, index, files, dir) => {
+                if (dir.indexOf("/@") !== -1) {
+                    return false
+                }
+                if (filename.indexOf("@") == 0) {
+                    return false
+                }
+                return true
+            }
         })
     )
 }
