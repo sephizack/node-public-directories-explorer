@@ -14,6 +14,9 @@ if (!config.has("publicDirectories")) {
     process.exit(1);
 }
 
+// Public files
+app.use('/public', express.static('public'))
+
 // Setup Authentication
 if (config.has('credentials')) {
     let credentials = config.get('credentials')
