@@ -47,7 +47,8 @@ for (let directory of config.get("publicDirectories")) {
                     return false
                 }
                 return true
-            }
+            },
+            'view':'details'
         })
     )
 }
