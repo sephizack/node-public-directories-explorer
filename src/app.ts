@@ -27,7 +27,6 @@ if (config.has('credentials')) {
     })   
 }
 
-
 // Expose directories
 for (let directory of config.get("publicDirectories")) {
     Logger.info(`Serve '${directory["localPath"]}' at http://localhost:${config.get("serverPort")}/${directory["urlPath"]} ...`);
@@ -36,6 +35,7 @@ for (let directory of config.get("publicDirectories")) {
         express.static(directory["localPath"]),
         serveIndex(directory["localPath"], {
             'icons': true,
+            'stylesheet': './public/style.css',
             "filter": (filename, index, files, dir) => {
                 if (dir.indexOf("/@") !== -1) {
                     return false
@@ -50,6 +50,7 @@ for (let directory of config.get("publicDirectories")) {
 }
 
 // Start server
+app.use('/public', express.static('public'));
 app.listen(config.get("serverPort"), err => {
     if (err) {
         return Logger.error(err);
