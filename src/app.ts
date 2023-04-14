@@ -20,14 +20,16 @@ app.use('/public', express.static('public'))
 // Setup Authentication
 if (config.has('credentials')) {
     let credentials = config.get('credentials')
-    app.use(function (request, response, next) {
-        var user = auth(request)
-        if (!user || !credentials.name || credentials.password !== user.pass) {
-          response.set('WWW-Authenticate', `Basic realm="${credentials.realm}"`)
-          return response.status(401).send()
-        }
-        return next()
-    })   
+	if (credentials !== false) {
+		app.use(function (request, response, next) {
+			var user = auth(request)
+			if (!user || !credentials.name || credentials.password !== user.pass) {
+				response.set('WWW-Authenticate', `Basic realm="${credentials.realm}"`)
+				return response.status(401).send()
+			}
+			return next()
+		})
+	}
 }
 
 // Expose directories
