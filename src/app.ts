@@ -14,9 +14,6 @@ if (!config.has("publicDirectories")) {
     process.exit(1);
 }
 
-// Public files
-app.use('/public', express.static('public'))
-
 // Setup Authentication
 if (config.has('credentials')) {
     let credentials = config.get('credentials')
@@ -56,7 +53,6 @@ for (let directory of config.get("publicDirectories")) {
 }
 
 // Start server
-app.use('/public', express.static('public'));
 app.listen(config.get("serverPort"), err => {
     if (err) {
         return Logger.error(err);

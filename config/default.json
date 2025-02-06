@@ -6,9 +6,5 @@
 		"realm": "A password is required"
 	},
 	"publicDirectories": [
-		/*{
-			"localPath": "/path/to/your/local/files",
-			"urlPath": "/your/files"
-		}*/
 	]
 }
