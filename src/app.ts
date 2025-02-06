@@ -29,6 +29,13 @@ if (config.has('credentials')) {
 	}
 }
 
+// Set headers Expire 
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
+    res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
+    next();
+});
+
 // Expose directories
 for (let directory of config.get("publicDirectories")) {
     Logger.info(`Serve '${directory["localPath"]}' at http://localhost:${config.get("serverPort")}/${directory["urlPath"]} ...`);
