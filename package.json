@@ -28,11 +28,12 @@
   },
   "scripts": {
     "start": "tsc && node dist/src/app.js",
-	"start-no-build": "node dist/src/app.js",
+	  "start-no-build": "node dist/src/app.js",
     "watch-node": "nodemon dist/src/app.js",
     "watch": "concurrently -k \"npm run watch-ts\" \"npm run watch-node\"",
     "watch-ts": "tsc -w",
-    "test": "tsc --build --clean && tsc && jest -t"
+    "test": "tsc --build --clean && tsc && jest -t",
+    "build": "tsc --skipLibCheck"
   },
   "author": "Tony Bisegna",
   "license": "MIT"
