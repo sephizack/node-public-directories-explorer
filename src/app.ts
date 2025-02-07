@@ -3,7 +3,10 @@ import express from 'express'
 import config from 'config';
 import serveIndex from 'serve-index';
 import auth from 'basic-auth'
+import cors from 'cors'
+
 const app = express();
+app.use(cors())
 
 if (!config.has("serverPort")) {
     Logger.warning("You must provide the config 'serverPort'")

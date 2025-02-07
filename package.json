@@ -13,6 +13,7 @@
   "dependencies": {
     "basic-auth": "^2.0.1",
     "config": "^3.3.12",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "serve-index": "^1.9.1"
   },
@@ -28,7 +29,7 @@
   },
   "scripts": {
     "start": "tsc && node dist/src/app.js",
-	  "start-no-build": "node dist/src/app.js",
+    "start-no-build": "node dist/src/app.js",
     "watch-node": "nodemon dist/src/app.js",
     "watch": "concurrently -k \"npm run watch-ts\" \"npm run watch-node\"",
     "watch-ts": "tsc -w",
